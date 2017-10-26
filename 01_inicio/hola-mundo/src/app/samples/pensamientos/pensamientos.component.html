@@ -6,12 +6,15 @@
       <p>
         <button id='Añadir' (click)="addIdea()">Añadir</button>
       </p>
-
-      <aside *ngIf="aIdeas.length">
+      <!--  -->
+      <aside *ngIf="aIdeas.length; then ideasTemplate else vacioTemplate"></aside>
+      <ng-template #ideasTemplate>
       <h3>Lista de Ideas</h3>
       <ul>
         <li *ngFor="let idea of aIdeas; let i = index;">{{idea}} ({{i+1}})</li>
       </ul>
-    </aside>
-
+      </ng-template>
+      <ng-template #vacioTemplate>
+        <p>Escribe alguna idea</p>
+      </ng-template>
 </div>
